@@ -31,8 +31,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    # Third-party
+    "crispy_forms",
+    "allauth",
+    "allauth.account",
     # Local
     "apps.users.apps.UsersConfig",
+    "apps.blog.apps.BlogConfig",
 ]
 
 MIDDLEWARE = [
@@ -50,7 +56,7 @@ ROOT_URLCONF = "barloweanalytics.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR + "/templates/"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -115,3 +121,25 @@ STATIC_URL = "/static/"
 
 # Users
 AUTH_USER_MODEL = "users.CustomUser"
+
+
+# django-cirspy-forms
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# django-allauth config
+SITE_ID = 1
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# Login settings
+LOGIN_REDIRECT_URL = "blog:blog_home"
+LOGOUT_REDIRECT_URL = "blog:blog_home"
+# Sets the Remember Me box on Log in
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True

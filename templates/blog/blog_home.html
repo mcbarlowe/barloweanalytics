@@ -1,0 +1,10 @@
+<!-- templates/blog/blog_home.html -->
+{% extends '_base.html' %}
+
+{% block title%}Blog{% endblock title %}
+
+{% block content %}
+<h1>Blog Home</h1>
+
+<h2><a href="{% url 'blog:about' %}">About Page</a></h2>
+{% endblock content %}
