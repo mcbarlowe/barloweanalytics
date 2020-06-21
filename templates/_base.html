@@ -2,15 +2,27 @@
 <!DOCTYPE html>
 
 <!--Add in login, signup stuff -->
+{% load static %}
 <html>
 <head>
   <meta charset="utf-8">
   <title>{% block title %}Barlowe Analytics{% endblock title %}</title>
-</head>
+  <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
+  {% block additional_css %}
+  {% endblock additional_css %}
+  </head>
 <body>
   <div class="container">
     {% block content %}
     {% endblock content %}
   </div>
+  <!-- Installed Javascript packages -->
+  <script src="{% static 'js/vendor/jquery-3.5.1.min.js' %}"></script>
+  <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <!-- Local Javascript files -->
+  {% block js %}
+  {% endblock js %}
+
 </body>
 </html>
