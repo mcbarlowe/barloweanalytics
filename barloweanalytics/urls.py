@@ -2,6 +2,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
+from apps.blog.views import HomeView
 
 urlpatterns = [
     # Django admin
@@ -10,5 +11,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     # Local apps
     # blog urls
-    path("", include("apps.blog.urls")),
+    path("blog/", include("apps.blog.urls")),
+    # home page
+    path("", HomeView.as_view(), name="home")
 ]
