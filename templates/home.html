@@ -2,6 +2,45 @@
 
 {% extends '_base.html' %}
 
+{% load static %}
+{% block additional_css %}
+<style>
+#logo {
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+  .banner-image {
+    height: 400px;
+  }
+  .banner-info {
+    display: flex-column;
+    height: 600px;
+    background: linear-gradient(rgb(100, 100, 100), black);
+    color: white;
+    /*smooths edge of top of div to make the transition not as sharp*/
+    box-shadow: 0 0 2px 1px #555;
+
+  }
+  .header-info {
+    display: flex;
+    justify-content: center;
+  }
+
+</style>
+
+{% endblock additional_css %}
 {% block content %}
-<h1>Home Page</h1>
+<div class="banner-image">
+  <img id="logo" src="{% static 'img/logo.png' %}">
+</div>
+<div class="banner-info">
+  <div class="header-info">
+    <h1>Data Designs for the 21st Century</h1>
+  </div>
+</div>
 {% endblock %}
